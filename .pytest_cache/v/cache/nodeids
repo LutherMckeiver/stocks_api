@@ -1,0 +1,4 @@
+[
+  "stocks_api/tests/tests.py::TestMyViewSuccessCondition::test_passing_view",
+  "stocks_api/tests/tests.py::TestMyViewFailureCondition::test_failing_view"
+]
