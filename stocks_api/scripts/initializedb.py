@@ -32,10 +32,12 @@ def main(argv=sys.argv):
     options = parse_vars(argv[2:])
     setup_logging(config_uri)
     settings = get_appsettings(config_uri, options=options)
-
+    
+    # Creates a connection(engine) to the DB
     engine = get_engine(settings)
+    # Creates tables for our modesl in the DB
     Base.metadata.create_all(engine)
-
+    Below is used for seeding the database
     session_factory = get_session_factory(engine)
 
     with transaction.manager:
@@ -43,3 +45,4 @@ def main(argv=sys.argv):
 
         model = MyModel(name='one', value=1)
         dbsession.add(model)
+
