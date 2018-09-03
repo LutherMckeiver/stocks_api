@@ -5,5 +5,5 @@ roles_association = Table(
     'roles_association',
     metadata,
     Column('account_id', Integer, ForeignKey('accounts.id')),
-    Column('role_id', Integer, ForeignKey('accounts_roles_id'))
+    Column('role_id', Integer, ForeignKey('account_roles.id'))
 )

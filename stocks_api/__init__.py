@@ -3,7 +3,7 @@ from pyramid.authorization import ACLAuthorizationPolicy
 from pyramid.security import Allow, ALL_PERMISSIONS
 
 
-class ROOTACL:
+class RootACL:
     __acl__ = [
         (Allow, 'admin', ALL_PERMISSIONS),
         (Allow, 'view', ['read']),
@@ -13,22 +13,22 @@ class ROOTACL:
         pass
 
 
-def add_role_principals(userid, request):
-    return request.jwt_claims.get()
+def add_role_principles(userid, request):
+    return request.jwt_claims.get('roles', [])
 
 
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
     """
     config = Configurator(settings=settings)
-    config.include('pyramid_jwt')
     config.include('pyramid_restful')
-    config.set_root_factory(ROOTACL)
+    config.include('pyramid_jwt')
+    config.set_root_factory(RootACL)
     config.set_authorization_policy(ACLAuthorizationPolicy())
     config.set_jwt_authentication_policy(
-        'supersecretsecret',  # os.environ.get('SECRET, None)
+        'superseekretseekrit',  # os.environ.get('SECRET', None)
         auth_type='Bearer',
-        callback=add_role_principals,
+        callback=add_role_principles
     )
     config.include('.models')
     config.include('.routes')

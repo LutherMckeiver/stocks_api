@@ -1,7 +1,10 @@
 {
   "stocks_api/models/account.py": true,
-  "stocks_api/models/associations.py": true,
   "stocks_api/models/schemas.py": true,
   "stocks_api/routes.py": true,
-  "stocks_api/views/auth.py": true
+  "stocks_api/scripts/initializedb.py": true,
+  "stocks_api/views/auth.py": true,
+  "stocks_api/views/default.py": true,
+  "stocks_api/views/http_errors.py": true,
+  "stocks_api/views/portfolio.py": true
 }
